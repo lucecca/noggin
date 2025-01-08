@@ -3,9 +3,9 @@
 
 The aim of the role is to install [noggin](https://github.com/fedora-infra/noggin) on Redhat (ansible_os_family) based operating systems.
 The installation of noggin is performed via rpm command and not dnf module because there's an [issue](https://bugzilla.redhat.com/show_bug.cgi?id=2277356) with the noggin package released on epel repository. Therefore the installation is performed this way:
-dnf module is used in downloadonly mode
-downloaded rpms are installed rpm *rpm --force
-downloaded rpms are removed
+- dnf module is used in downloadonly mode
+- downloaded rpms are installed rpm *rpm --force
+- downloaded rpms are removed
 
 The role installs even the private key and public selfsigned cert used by nginx to be used in https.
 
@@ -108,11 +108,11 @@ Including an example of how to use your role (for instance, with variables passe
 
 In order to override your sensitive data like:
 
-noggin_mail_username
-noggin_mail_password
-noggin_mail_default_sender
-noggin_mail_username
-noggin_mail_password
+- freeipa_admin_user
+- freeipa_admin_pass
+- noggin_mail_username
+- noggin_mail_password
+- noggin_mail_default_sender
 
 Write a file (e.g. **nogginsecrevar.yml**) containing the variables with the proper values 
 
