@@ -1,6 +1,8 @@
 server {
     listen 80;
     server_name {{ ngnix_noggin_server_name }};
+{% if nginx_noggin_enable_tls == True %}
+    # Redirect all HTTP requests to HTTPS with a 301 Moved Permanently response.
     return 301 https://{{ ngnix_noggin_server_name }}$request_uri;
 }
 
@@ -9,11 +11,14 @@ server {
 
     server_name {{ ngnix_noggin_server_name }};
 
+    #SSL certificate
+    ssl_certificate {{ noggin_cert_dir }}/{{ noggin_cert_name }};
+    ssl_certificate_key {{noggin_private_key_dir }}/{{ noggin_private_key_name }};
+{% endif %}
+
     access_log  /var/log/nginx/noggin.access.log;
     error_log  /var/log/nginx/noggin.error.log;
 
-    ssl_certificate {{ noggin_cert_dir }}/{{ noggin_cert_name }};
-    ssl_certificate_key {{noggin_private_key_dir }}/{{ noggin_private_key_name }};
 
     location @noggin {
         proxy_set_header Host $http_host;
