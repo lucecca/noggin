@@ -22,7 +22,7 @@ freeipa_hosts:
  - host: freeipa2.atm.local
    port: 443
 freeipa_cert_dir: /etc/ipa
-freeipa_ca_cert_file: ipa_ca    .crt
+freeipa_ca_cert_file: ipa_ca.crt
 
 # If set to False then noggin if properly configured will send email to the user, otw if set to True it will not send email because is suppressing then sending
 noggin_mail_suppress_send: False

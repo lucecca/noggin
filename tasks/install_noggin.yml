@@ -44,7 +44,7 @@
     mode: 0700
     state: directory
 
-- name: Create nogging web application configuration dir
+- name: Create freeipa CA cert directory
   ansible.builtin.file:
     path: '{{ freeipa_cert_dir }}'
     state: directory
@@ -78,7 +78,7 @@
     enabled: true
     state: started
 
-- name:
+- name: Deploy the noggin nginx configuratiion file
   ansible.builtin.template:
     src: nginx_noggin.conf.j2
     dest: /etc/nginx/conf.d/noggin.conf
